@@ -4,10 +4,13 @@
 -------------------------------------------------------------------------------------------
 **Latches:** 
 Here, two latches A and B have been used, each receiving 8 bit inputs. These inputs are stored here temporarily, before they are sent to the ALU.
+
 **ALU core:**
 The ALU performs arithmetic and logical calculations according to the functions assigned to it in the code. 
+
 **LED display Unit:**
 The outputs of the calculations from the ALU are then sent to the Seven Segment display.
+
 **Control unit:** 
 It consists of a Finite State Machine (either Mealy or Moore) which is connected to a decoder (4x16, here). The Control Unit is responsible for communicating instructions and signals to the ALU. 
 - Latches:
