@@ -1,13 +1,14 @@
 # General-Purpose-Processor-
 3 ALUs in VHDL
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####**Latches:** 
+-------------------------------------------------------------------------------------------
+**Latches:** 
 Here, two latches A and B have been used, each receiving 8 bit inputs. These inputs are stored here temporarily, before they are sent to the ALU.
-####**ALU core:**
+**ALU core:**
 The ALU performs arithmetic and logical calculations according to the functions assigned to it in the code. 
-####**LED display Unit:**
+**LED display Unit:**
 The outputs of the calculations from the ALU are then sent to the Seven Segment display.
-####**Control unit:** 
+**Control unit:** 
 It consists of a Finite State Machine (either Mealy or Moore) which is connected to a decoder (4x16, here). The Control Unit is responsible for communicating instructions and signals to the ALU. 
 - Latches:
   Two latches A and B were used which received 8 bit inputs each. D latches ‘set’ the state to 1 when the value of input at D is 1. Similarly, it ‘resets’ to 0 when the
