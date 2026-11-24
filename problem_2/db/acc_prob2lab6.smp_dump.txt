@@ -1,0 +1,12 @@
+
+State Machine - |acc_prob2lab6DIAG|moore:inst12|present_y
+Name present_y.S9 present_y.S8 present_y.S7 present_y.S6 present_y.S5 present_y.S4 present_y.S3 present_y.S2 present_y.S1 
+present_y.S1 0 0 0 0 0 0 0 0 0 
+present_y.S2 0 0 0 0 0 0 0 1 1 
+present_y.S3 0 0 0 0 0 0 1 0 1 
+present_y.S4 0 0 0 0 0 1 0 0 1 
+present_y.S5 0 0 0 0 1 0 0 0 1 
+present_y.S6 0 0 0 1 0 0 0 0 1 
+present_y.S7 0 0 1 0 0 0 0 0 1 
+present_y.S8 0 1 0 0 0 0 0 0 1 
+present_y.S9 1 0 0 0 0 0 0 0 1 

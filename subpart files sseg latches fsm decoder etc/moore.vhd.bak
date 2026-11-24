@@ -1,0 +1,135 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+entity moore is
+	port (clk            	: in std_logic;
+        	reset            	: in std_logic;
+        	student_id    	: out std_logic_vector(3 downto 0);
+        	current_state	: out std_logic_vector(3 downto 0));
+   	 
+end entity;
+
+ARCHITECTURE fsm of moore is
+
+ TYPE sig_state IS (S0, S1, S2, S3, S4, S5, S6, S7, S8);	--user-defined signa lusing TYPE keywordand and it has 9 possible vlaues
+ SIGNAL present_y : sig_state;                                	--signal present_y is of the sig_state type and represents the outputs of the flipflops that implement these states
+ 
+ BEGIN
+	PROCESS (clk, reset)
+    	BEGIN
+        	IF reset = '1' then
+            	present_y <= S0;
+           	 
+        	ELSIF rising_edge(clk) then
+                	case present_y is
+               	 
+                    	when S0 =>
+                        	IF clk = '1' then
+                            	present_y <= S0;
+                        	ELSE
+                            	present_y <= S4;
+                        	END IF;
+                       	 
+                        	when S4 =>
+                        	IF clk = '1' then
+                            	present_y <= S4;
+                        	ELSE
+                            	present_y <= S3;
+                        	END IF;
+                       	 
+                        	when S3 =>
+                        	IF clk = '1' then
+                            	present_y <= S3;
+                        	ELSE
+                            	present_y <= S2;
+                        	END IF;
+                       	 
+                        	when S2 =>
+                        	IF clk = '1' then
+                            	present_y <= S2;
+                        	ELSE
+                            	present_y <= S1;
+                        	END IF;
+                       	 
+                        	when S1 =>
+                        	IF clk = '1' then
+                            	present_y <= S1;
+                        	ELSE
+                            	present_y <= S8;
+                        	END IF;
+                       	 
+                        	when S8 =>
+                        	IF clk = '1' then
+                            	present_y <= S8;
+                        	ELSE
+                            	present_y <= S7;
+                        	END IF;
+                       	 
+                        	when S7 =>
+                        	IF clk = '1' then
+                            	present_y <= S7;
+                        	ELSE
+                            	present_y <= S6;
+                        	END IF;
+                       	 
+                        	when S6 =>
+                        	IF clk = '1' then
+                            	present_y <= S6;
+                        	ELSE
+                            	present_y <= S5;
+                        	END IF;
+                       	 
+                        	when S5 =>
+                        	IF clk = '1' then
+                            	present_y <= S5;
+                        	ELSE
+                            	present_y <= S0;
+                        	END IF;
+                	END case;
+        	END IF;
+    	END PROCESS;
+   	 
+--student_id <= '....' WHEN present_y = S0;
+
+PROCESS(present_y)
+	BEGIN CASE present_y IS
+    	WHEN S0 =>
+        	current_state <= "0000";	--S0
+        	student_id <= "0101"; --5
+       	 
+    	WHEN S1 =>
+        	current_state <= "0001";	--S1
+        	student_id <= "0000"; --0
+       	 
+    	WHEN S2 =>
+        	current_state <= "0010";	--S2
+        	student_id <= "0011"; --3
+       	 
+    	WHEN S3 =>
+        	current_state <= "0011";	--S3
+        	student_id <= "0001"; --1
+       	 
+    	WHEN S4 =>
+        	current_state <= "0100";	--S4
+        	student_id <= "0000"; --0
+       	 
+    	WHEN S5 =>
+        	current_state <= "0101";	--S5
+        	student_id <= "0111"; --7
+       	 
+    	WHEN S6 =>
+        	current_state <= "0110";	--S6
+        	student_id <= "0001"; --1
+       	 
+    	WHEN S7 =>
+        	current_state <= "0111";	--S7
+        	student_id <= "0110"; --6
+       	 
+    	WHEN S8 =>
+        	current_state <= "1000";	--S8
+        	student_id <= "0111"; --7
+   	 
+    	END case;    
+	END PROCESS;       	 
+END fsm;
+
+
